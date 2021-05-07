@@ -12,8 +12,13 @@ const fs = require('fs');
  * @return：{name}
  * */
 
+function getFileName(storeDir){
+   return  fs.readdirSync(storeDir)
+}
+
+
 function getFileJson(pathJson,type='.json') {
-    const files =fs.readdirSync(pathJson)
+    const files = getFileName(pathJson)
     return files.filter(item=>path.extname(item) === type)
 }
 
@@ -40,5 +45,6 @@ function readFileJson(pathFile) {
 
 module.exports={
     readFileJson,
-    getFileJson
+    getFileJson,
+    getFileName
 }

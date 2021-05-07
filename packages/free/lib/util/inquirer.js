@@ -19,7 +19,7 @@ class InqSelect {
                     message = '请选择下列操作，按回车键确认',
                     filer,
                 }) {
-        if( filer && typeof filer === 'function'){
+        if( !filer && typeof filer !== 'function'){
             filer = this.filter
         }
         this.config = {
@@ -40,7 +40,7 @@ class InqSelect {
     }
 
     filter(v){
-        return v.value
+        return v
     }
 
 

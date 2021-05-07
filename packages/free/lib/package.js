@@ -20,7 +20,6 @@ class Package{
             fse.mkdirpSync(this.storeDir)
         }
 
-
     }
 
 }

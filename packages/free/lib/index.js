@@ -12,13 +12,16 @@ class InitCommand extends Command{
    async exec(){
 
        const {project} = await new InqSelect({choices:this.projectSelect}).select()
+        console.log(project)
        const temp = this.projectSelect.find(item=>item.value === project)
-       console.log(temp)
        const data = await new InqSelect({choices:temp.template}).select()
-       console.log(data)
+        const item  = temp.template.find(value => value.value === data.project).template
+        console.log(item)
        /**
-        * TODO 根据包 去下载对应的模板
+        * TODO 判断本地是否存在，再去远程拉取（远程拉去，缓存到本地，多任务进行）
         * */
+        this.createTemplate(item)
+
     }
 
 

@@ -23,6 +23,7 @@ class Command{
     constructor(appName,argv) {
         let projectSelect = []
         this.appName = appName
+        this.targetPath = path.resolve(userHOME,process.env.CLI_CACHE_DIR||'.free_cli')
         let runner = new Promise((resolve, reject) => {
             let chain = Promise.resolve()
             chain = chain.then(()=>this.checkNodeVersion()) //版本严重
@@ -33,9 +34,7 @@ class Command{
         })
     }
     async init(){
-        let targetPath = path.resolve(userHOME,process.env.CLI_CACHE_DIR||'.free_cli')
-        const configPath = path.resolve(targetPath,'config')
-        const storeDir = path.resolve(targetPath,'template')
+        const configPath = path.resolve(this.targetPath,'config')
         // console.log(configPath)
         if(await pathExists(configPath)){
             /** 读取配置 项目配置和 组件配置*/
@@ -45,9 +44,6 @@ class Command{
         }
         fse.mkdirpSync(configPath)
         /** 初始化配置*/
-        // new Package({
-        //     storeDir
-        // })
     }
     exec(){
         throw new Error('exec 必须实现')
@@ -66,8 +62,13 @@ class Command{
     }
 
     /***/
-    createInquirerSelect(){
-
+    createTemplate(project){
+        const storeDir = path.resolve(this.targetPath,'template',project.npmName)
+       if(!pathExists(storeDir)){
+           console.log('存在')
+       }
+       // 获取远端temp
+        console.log(project.versions)
     }
 
 }
