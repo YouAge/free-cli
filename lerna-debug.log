@@ -1,0 +1,14 @@
+28 error Error: Command failed with exit code 1: git add -- packages/free/package.json packages/free/package-lock.json lerna.json
+28 error warning: LF will be replaced by CRLF in lerna.json.
+28 error The file will have its original line endings in your working directory
+28 error warning: LF will be replaced by CRLF in packages/free/package.json.
+28 error The file will have its original line endings in your working directory
+28 error The following paths are ignored by one of your .gitignore files:
+28 error packages/free/package-lock.json
+28 error hint: Use -f if you really want to add them.
+28 error hint: Turn this message off by running
+28 error hint: "git config advice.addIgnoredFile false"
+28 error     at makeError (D:\Program\脚手架\free-cli\node_modules\execa\lib\error.js:59:11)
+28 error     at handlePromise (D:\Program\脚手架\free-cli\node_modules\execa\index.js:114:26)
+28 error     at processTicksAndRejections (internal/process/task_queues.js:93:5)
+28 error     at async Promise.all (index 0)
