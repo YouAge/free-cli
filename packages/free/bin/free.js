@@ -6,6 +6,7 @@
 
 const { Command } = require('commander');
 const program = new Command();
+require('dotenv').config();
 
 const index = require('../lib')
 // 定义显示模块的版本号

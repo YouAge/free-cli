@@ -21,3 +21,9 @@ const index = require('index');
 ```shell
 npm install @free-tool/cli -g
 ```
+
+
+## free-cli使用的插件
+
+- semver
+- colors

@@ -1,6 +1,6 @@
 {
   "name": "@free-tool/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "free-tool cli",
   "keywords": [
     "free"
@@ -22,11 +22,13 @@
     "lib"
   ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "debug": "free create app"
   },
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^7.2.0",
+    "dotenv": "^9.0.0",
+    "fs-extra": "^10.0.0",
     "inquirer": "^8.0.0",
     "npmlog": "^4.1.2",
     "path-exists": "^4.0.0",
