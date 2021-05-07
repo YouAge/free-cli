@@ -13,7 +13,7 @@
 
 ## index-cli使用 （正在开发中， 预计周天上线）
 
-- npm install
+-  npm install @free-tool/cli -g
 
 
 
