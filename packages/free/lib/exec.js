@@ -17,31 +17,39 @@ const fse = require("fs-extra");
 const Package = require("./package");
 const path = require("path");
 const pathExists = require("path-exists");
+const inqSelect = require("./util/inquirer");
+const fs = require("fs");
+const {getFileName} = require("./util/fsFile");
 const {readFileJson} = require("./util/fsFile");
 
 class Command{
     constructor(appName,argv) {
-        let projectSelect = []
+        this.projectSelect = []
         this.appName = appName
+        this.localPath = ''
         this.targetPath = path.resolve(userHOME,process.env.CLI_CACHE_DIR||'.free_cli')
+        if(process.env.READ_DEFAULT){
+            this.showDefault()
+        }
         let runner = new Promise((resolve, reject) => {
             let chain = Promise.resolve()
             chain = chain.then(()=>this.checkNodeVersion()) //版本严重
+            chain = chain.then(()=>this.checkProjectName())
             chain = chain.then(()=>this.initArgs()) // 参数严重
-            chain = chain.then(()=>this.init()) // 初始化
+            chain = chain.then(()=>this.init()) // 初始化配置
             chain = chain.then(()=>this.exec())
             chain.catch(err=>{console.log(err.message)})
         })
     }
     async init(){
         const configPath = path.resolve(this.targetPath,'config')
-        // console.log(configPath)
         if(await pathExists(configPath)){
             /** 读取配置 项目配置和 组件配置*/
             // const confTempPath = require(configPath)
-            this.projectSelect = await readFileJson(configPath)
+            this.projectSelect =[...await readFileJson(configPath),...this.projectSelect]
             // console.log(projectSelect)
         }
+
         fse.mkdirpSync(configPath)
         /** 初始化配置*/
     }
@@ -49,7 +57,38 @@ class Command{
         throw new Error('exec 必须实现')
     }
 
-    initArgs(){
+    async initArgs(){
+
+    }
+
+    /** 检查但前目录下是*/
+    async checkProjectName(){
+        this.localPath = path.resolve(process.cwd(),this.appName)
+        if(await pathExists( this.localPath )){
+            const {project} = await  inqSelect({
+                type:'list',
+                message:"创建的项目名已存在，选择下列操作",
+                choices:[
+                    { name: 'Overwrite', value: 'overwrite' },
+                    { name: 'Merge', value: 'merge' },
+                    { name: 'Cancel', value: false }
+                ]
+            })
+            if(!project){
+                return false
+            }else {
+                if(project === 'overwrite'){
+                    const {appName} = await inqSelect({
+                        type:'input',
+                        name:'appName',
+                        message:'请输入新的名字'
+                    })
+                    /** TODO 验证项目名*/
+                    console.log(appName)
+                    this.appName = appName
+                }
+            }
+        }
 
     }
 
@@ -71,6 +110,14 @@ class Command{
         console.log(project.versions)
     }
 
+    /**
+     * @读取本地配置
+     * */
+     showDefault(){
+         const defaultPath = path.resolve(__dirname,'config')
+           this.projectSelect =  readFileJson(defaultPath)
+
+    }
 }
 
 

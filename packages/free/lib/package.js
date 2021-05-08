@@ -4,6 +4,7 @@
  */
 const pathExists = require('path-exists')
 const fse = require("fs-extra");
+const path = require("path");
 const {isObject} = require("./util");
 
 class Package{
@@ -12,6 +13,10 @@ class Package{
         this.storeDir = options.storeDir // 存储路径
         this.packageName = options.packageName
         this.packageVersion = options.packageVersion
+        // 安装包名
+        this.npmName = options.npmName
+        this.versions = options.versions
+
     }
 
     async prepare(){
@@ -19,8 +24,19 @@ class Package{
         if(this.storeDir && !pathExists(this.storeDir) ){
             fse.mkdirpSync(this.storeDir)
         }
+    }
+
+    async downloadProject(){
+        if(!pathExists(path.resolve(this.storeDir,`__${this.npmName}_${this.versions}`))){
+            /** 安装temp*/
+        }
+    }
+
+
+    async downloadTemplate(){
 
     }
+
 
 }
 

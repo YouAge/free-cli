@@ -3,7 +3,7 @@
 
 
 const Command = require("./exec");
-const InqSelect = require("./util/inquirer");
+const inqSelect = require("./util/inquirer");
 
 class InitCommand extends Command{
     /**
@@ -11,15 +11,14 @@ class InitCommand extends Command{
      * */
    async exec(){
 
-       const {project} = await new InqSelect({choices:this.projectSelect}).select()
-        console.log(project)
-       const temp = this.projectSelect.find(item=>item.value === project)
-       const data = await new InqSelect({choices:temp.template}).select()
-        const item  = temp.template.find(value => value.value === data.project).template
-        console.log(item)
+       const {tempName} = await  inqSelect({choices:this.projectSelect,name:'tempName'})
+       const tempList = this.projectSelect.find(item=>item.value === tempName)
+       const {projectName} = await  inqSelect({choices:tempList.children,name:'projectName'})
+        const item  = tempList.children.find(item => item.value === projectName).template
        /**
         * TODO 判断本地是否存在，再去远程拉取（远程拉去，缓存到本地，多任务进行）
         * */
+        Object.assign(item,{createName:this.appName})
         this.createTemplate(item)
 
     }

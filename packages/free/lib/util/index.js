@@ -4,13 +4,10 @@
  */
 
 
-
-function isObject(obj){
-    return Object.prototype.toString.call(obj) === '[object Object]'
-}
+const publics =  require('./public')
 
 
 
 module.exports ={
-    isObject
+    ...publics
 }

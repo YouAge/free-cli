@@ -25,12 +25,12 @@ function getFileJson(pathJson,type='.json') {
 /**
  * @ 读取数据，
  * */
-function readFileJson(pathFile) {
+function readFileJson(pathFile,children='children') {
     let jsonData = []
     let fileNames = getFileJson(pathFile)
     fileNames.forEach(file =>{
        const item = JSON.parse(fs.readFileSync(path.resolve(pathFile,file),'utf-8')) ||{}
-        if(item.template && item.template.length>0){
+        if(item[children] && item[children].length>0){
             jsonData.push(item)
         }
     })
