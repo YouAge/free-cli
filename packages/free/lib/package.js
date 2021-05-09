@@ -6,7 +6,7 @@ const pathExists = require('path-exists')
 const fse = require("fs-extra");
 const npminstall = require('npminstall');
 const path = require('path')
-const {isObject,spinner,npm} = require("./util");
+const {isObject,spinner,npm,npmInstall} = require("./util");
 
 
 class Package{
@@ -58,7 +58,6 @@ class Package{
         }
         const templatePath = path.resolve(lateSourcePath, 'template');
         spinnerStart.stop(true)
-        console.log(templatePath)
         return templatePath
     }
     async installTemplate({temp,templatePath,createPath}){
@@ -66,7 +65,18 @@ class Package{
       fse.ensureDirSync(createPath)
       fse.ensureDirSync(templatePath)
       fse.copySync(templatePath,createPath)
+      /** 配置*/
+      const ejsIgnore =[
+        '**/node_modules/**',
+        '**/.git/**',
+        '**/.vscode/**',
+        '**/.DS_Store',
+      ]
+      if(temp.ignore){
+        ejsIgnore.push(...temp.ignore)
+      }
       spinnerStart.stop(true);
+      await npmInstall(createPath)
 
     }
 

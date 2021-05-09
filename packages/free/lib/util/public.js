@@ -35,21 +35,26 @@ function spawn(command,args,options){
     return new Promise((resolve, reject) => {
         const child  =  cp.spawn(cmd,cmdArgs,options ||{})
         child.on('error',e => {
-            process.exit(1)
             reject(e)
         })
         child.on('exit',e=>{
-            process.exit(e)
             resolve(e)
         })
     })
-
 }
 
 
+async function npmInstall(targetPath){
+    return await spawn('npm',['install','--registry=https://registry.npm.taobao.org'],{
+        stdio:'inherit',
+        cwd:targetPath
+    })
+}
 
 
 module.exports ={
     isObject,
-    delPropertyOfNull
+    delPropertyOfNull,
+    spawn,
+    npmInstall,
 }

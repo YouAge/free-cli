@@ -5,6 +5,7 @@
 
 const spinner = require('./spinner')
 const npm = require('./npm')
+const {spawn,npmInstall} = require('./public')
 
 function sleep(timeout) {
     return new Promise((resolve => {
@@ -22,5 +23,7 @@ module.exports ={
     isObject,
     spinner,
     sleep,
-    npm
+    npm,
+    spawn,
+    npmInstall
 }

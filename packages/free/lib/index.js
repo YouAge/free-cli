@@ -25,10 +25,10 @@ class InitCommand extends Command{
         packageName:item.npmName,
         packageVersion:item.versions
       })
-     const templatePath =  await pak.downloadTemplate()
+       const templatePath =  await pak.downloadTemplate()
       /** 开始安装模板*/
       await pak.installTemplate({temp:item,createPath:this.localPath,templatePath})
-
+      // 启动程序
     }
 
 
