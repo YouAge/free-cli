@@ -46,9 +46,7 @@ class Command{
         const configPath = path.resolve(this.targetPath,'config')
         if(await pathExists(configPath)){
             /** 读取配置 项目配置和 组件配置*/
-            // const confTempPath = require(configPath)
             this.projectSelect =[...await readFileJson(configPath),...this.projectSelect]
-            // console.log(projectSelect)
         }
 
         fse.mkdirpSync(configPath)

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "free create test_app"
+    "test": "free page test_app"
   },
   "keywords": [],
   "author": "",

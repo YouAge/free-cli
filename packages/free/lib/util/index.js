@@ -6,6 +6,9 @@
 const spinner = require('./spinner')
 const npm = require('./npm')
 const {spawn,npmInstall} = require('./public')
+const {ejsCompile} = require('./ejs')
+const {writeFile} = require('./fsFile')
+const log = require('./log')
 
 function sleep(timeout) {
     return new Promise((resolve => {
@@ -36,5 +39,8 @@ module.exports ={
     npm,
     spawn,
     npmInstall,
-    checkAppName
+    checkAppName,
+  ejsCompile,
+  writeFile,
+  log
 }

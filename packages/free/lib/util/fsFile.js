@@ -38,13 +38,18 @@ function readFileJson(pathFile,children='children') {
 }
 
 
+const writeFile = (path, content) => {
+  return  fs.writeFileSync(path,content);
+}
 
-// const data = path.resolve(userHOME,'.free_cli/config')
-// console.log(data)
-// console.log(readFileJson(data))
+
+
+
+
 
 module.exports={
     readFileJson,
     getFileJson,
-    getFileName
+    getFileName,
+    writeFile,
 }
