@@ -1,0 +1,31 @@
+{
+ "description": "默认项目模板",
+ "name": "vue默认模板",
+ "value": "default",
+ "children": [
+    {
+     "name": "free-vue2-admin管理项目",
+     "value": "free-vue-admin",
+     "template": {
+      "npmName": "free-vue-admin",
+      "versions": "^1.0.0",
+      "ignore": [],
+      "path": "本地地址",
+      "url": "url地址获取",
+      "access": "npmName || 获取方式，默认npmName"
+     }
+    },
+    {
+     "name": "free-vue3-admin管理项目",
+     "value": "free-vu3-admin",
+     "template": {
+      "npmName": "free-vu3-admin",
+      "versions": "^1.0.0",
+      "ignore": [],
+      "path": "本地地址",
+      "url": "url地址获取",
+      "access": "npmName || 获取方式，默认npmName"
+     }
+    }
+  ]
+}

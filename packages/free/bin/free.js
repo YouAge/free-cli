@@ -6,7 +6,8 @@
 
 const { Command } = require('commander');
 const program = new Command();
-require('dotenv').config();
+const path = require('path')
+require('dotenv').config({path:path.resolve(__dirname,'../.env')});
 
 const index = require('../lib')
 // 定义显示模块的版本号

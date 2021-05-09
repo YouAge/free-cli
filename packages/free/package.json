@@ -22,7 +22,7 @@
     "lib"
   ],
   "scripts": {
-    "debug": "free create app"
+    "debug": "free create testApp"
   },
   "dependencies": {
     "axios": "^0.21.1",
