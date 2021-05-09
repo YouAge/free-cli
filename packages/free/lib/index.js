@@ -31,8 +31,6 @@ class InitCommand extends Command{
       // 启动程序
     }
 
-
-
 }
 
 

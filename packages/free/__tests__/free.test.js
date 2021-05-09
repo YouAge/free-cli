@@ -1,7 +1,13 @@
 'use strict';
 
-const free = require('..');
+// const free = require('..');
+//
+// describe('free', () => {
+//     it('needs tests');
+// });
 
-describe('free', () => {
-    it('needs tests');
-});
+
+const util =  require('../lib/util')
+
+
+util.checkAppName('sfaasdf')

@@ -17,6 +17,16 @@ function isObject(obj){
     return Object.prototype.toString.call(obj) === '[object Object]'
 }
 
+/** 验证项目明，不能有大写*/
+function checkAppName(appName){
+   const re = /^([a-z_][a-z0-9_]*)+([.][a-z_][a-z0-9_]*)+$/
+    if(re.test(appName)){
+        console.log('合格')
+    }else {
+        console.log('失败')
+    }
+
+}
 
 
 module.exports ={
@@ -25,5 +35,6 @@ module.exports ={
     sleep,
     npm,
     spawn,
-    npmInstall
+    npmInstall,
+    checkAppName
 }

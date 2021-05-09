@@ -34,7 +34,6 @@ class Command{
         let runner = new Promise((resolve, reject) => {
             let chain = Promise.resolve()
             chain = chain.then(()=>this.checkNodeVersion()) //版本严重
-            chain = chain.then(()=>this.checkProjectName())
             chain = chain.then(()=>this.initArgs()) // 参数严重
             chain = chain.then(()=>this.init()) // 初始化配置
             chain = chain.then(()=>this.exec())
@@ -60,7 +59,9 @@ class Command{
     }
 
     async initArgs(){
-
+        if(!this.argv.force){
+            await this.checkProjectName()
+        }
     }
 
     /** 检查但前目录下是*/
@@ -77,7 +78,7 @@ class Command{
                 ]
             })
             if(!project){
-                return false
+                throw new Error('您取消了操作')
             }else {
                 if(project === 'overwrite'){
                     const {appName} = await inqSelect({
@@ -86,7 +87,6 @@ class Command{
                         message:'请输入新的名字'
                     })
                     /** TODO 验证项目名*/
-                    console.log(appName)
                     this.appName = appName
                 }
             }

@@ -65,7 +65,7 @@ class Package{
       fse.ensureDirSync(createPath)
       fse.ensureDirSync(templatePath)
       fse.copySync(templatePath,createPath)
-      /** 配置*/
+      /** 配置 TODO  */
       const ejsIgnore =[
         '**/node_modules/**',
         '**/.git/**',
