@@ -4,6 +4,7 @@
 
 const Command = require("./exec");
 const inqSelect = require("./util/inquirer");
+const Package = require("./package");
 
 class InitCommand extends Command{
     /**
@@ -19,7 +20,14 @@ class InitCommand extends Command{
         * TODO 判断本地是否存在，再去远程拉取（远程拉去，缓存到本地，多任务进行）
         * */
         Object.assign(item,{createName:this.appName})
-        this.createTemplate(item)
+        const pak = new Package({
+        targetPath:this.targetPath,
+        packageName:item.npmName,
+        packageVersion:item.versions
+      })
+     const templatePath =  await pak.downloadTemplate()
+      /** 开始安装模板*/
+      await pak.installTemplate({temp:item,createPath:this.localPath,templatePath})
 
     }
 

@@ -40,6 +40,8 @@ class Command{
             chain = chain.then(()=>this.exec())
             chain.catch(err=>{console.log(err.message)})
         })
+
+
     }
     async init(){
         const configPath = path.resolve(this.targetPath,'config')
@@ -89,7 +91,8 @@ class Command{
                 }
             }
         }
-
+        /** 创建文件*/
+        fse.mkdirpSync(this.localPath)
     }
 
     checkNodeVersion(){

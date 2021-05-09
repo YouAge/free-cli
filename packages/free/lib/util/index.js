@@ -21,5 +21,6 @@ function isObject(obj){
 module.exports ={
     isObject,
     spinner,
-    sleep
+    sleep,
+    npm
 }

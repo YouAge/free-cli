@@ -7,8 +7,8 @@
      "name": "free-vue2-admin管理项目",
      "value": "free-vue-admin",
      "template": {
-      "npmName": "free-vue-admin",
-      "versions": "^1.0.0",
+      "npmName": "free-vue2-admin-template",
+      "versions": "1.0.0",
       "ignore": [],
       "path": "本地地址",
       "url": "url地址获取",
