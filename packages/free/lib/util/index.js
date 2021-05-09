@@ -3,7 +3,14 @@
  *@ 文件介绍:
  */
 
+const spinner = require('./spinner')
+const npm = require('./npm')
 
+function sleep(timeout) {
+    return new Promise((resolve => {
+        setTimeout(resolve, timeout);
+    }));
+}
 
 function isObject(obj){
     return Object.prototype.toString.call(obj) === '[object Object]'
@@ -12,5 +19,7 @@ function isObject(obj){
 
 
 module.exports ={
-    isObject
+    isObject,
+    spinner,
+    sleep
 }

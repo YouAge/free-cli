@@ -20,7 +20,7 @@ const index = require('index');
 
 ## 使用
 
->目前正在开发中， 预计周天可以使用版本一
+>
 
 1. **安装**
 ```shell

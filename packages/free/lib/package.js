@@ -4,7 +4,10 @@
  */
 const pathExists = require('path-exists')
 const fse = require("fs-extra");
-const {isObject} = require("./util");
+const npminstall = require('npminstall');
+
+const {isObject,spinner,npm} = require("./util");
+
 
 class Package{
     constructor(options) {
@@ -15,11 +18,28 @@ class Package{
     }
 
     async prepare(){
-        // 传教 缓存路径
-        if(this.storeDir && !pathExists(this.storeDir) ){
+        // 获取最新版本
+        if(!pathExists(this.storeDir) ){
             fse.mkdirpSync(this.storeDir)
         }
+        const latestVersion = await npm.getNpmLatestSemverVersion(this.packageName,this.packageVersion)
+        if(latestVersion){
+            this.packageVersion = latestVersion
+        }
 
+    }
+
+    async install(){
+        await this.prepare() // 获取最新的版本号
+        // 安装
+        return npminstall({
+
+        })
+    }
+
+    async installTemplate(){
+        // 安装模板
+        let spinnerStart = spinner('正在安装模板...')
     }
 
 }
