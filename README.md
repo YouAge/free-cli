@@ -27,14 +27,25 @@ const index = require('index');
 npm install @free-tool/cli -g
 ```
 
+
 2. 命令
 
 ```shell
-
+# 创建项目模板
 free create projectName 
   - -y
   - -v
+#添加组件，page页面  
+free page appName 
+  -v,--vue
+  -r,--react
 ```
+
+
+
+
+
+
 
 3. **自由配置模板选项和功能**
 
@@ -43,21 +54,54 @@ free create projectName
 > `template` 缓存远端的模板，加速创建时间
 
 
-```shell
+配置自定义项目模板，
+再用户目录下 `.free_cli\config`没有就创建，
+在`config`文件夹下创建任意json文件,模板如下
 
-
+```json
+{
+ "description": "默认项目模板",
+ "name": "vue默认模板",
+ "value": "default",
+ "children": [
+    {
+     "name": "free-vue2-admin管理项目",
+     "value": "free-vue-admin",
+     "template": {
+      "npmName": "free-vue2-admin-template",
+      "versions": "1.0.0",
+      "ignore": [],
+      "path": "本地地址"
+     }
+    }
+  ]
+}
 ```
 
 
 
+## 自定义项目模板包发布NPM上
 
-
+```
+free-vue2-admin //npmName
+  -template //项目模板
+    ... 
+    -package.json 
+  -package.json //版本管理
+```
 
 
 
 
 ## free-cli使用的插件
 
+- lerna
 - semver
 - colors
-- 
+- inquirer
+- ejs
+- fs-extra
+- glob
+- npminstall
+- semver
+- dotenv
