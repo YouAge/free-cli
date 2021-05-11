@@ -29,6 +29,7 @@ class InitCommand extends Command{
       /** 开始安装模板*/
       await pak.installTemplate({temp:item,createPath:this.localPath,templatePath})
       // 启动程序
+      console.log('项目创建完成')
     }
 
 }
