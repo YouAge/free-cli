@@ -26,6 +26,7 @@ class Command{
     constructor(appName,argv) {
         this.projectSelect = []
         this.appName = appName
+        this.argv = argv
         this.localPath = ''
         this.targetPath = path.resolve(userHOME,process.env.CLI_CACHE_DIR||'.free_cli')
         if(process.env.READ_DEFAULT){
@@ -57,14 +58,15 @@ class Command{
     }
 
     async initArgs(){
+        this.localPath = path.resolve(process.cwd(),this.appName)
         if(!this.argv.force){
             await this.checkProjectName()
         }
+        fse.mkdirpSync(this.localPath)
     }
 
     /** 检查但前目录下是*/
     async checkProjectName(){
-        this.localPath = path.resolve(process.cwd(),this.appName)
         if(await pathExists( this.localPath )){
             const {project} = await  inqSelect({
                 type:'list',
@@ -89,8 +91,6 @@ class Command{
                 }
             }
         }
-        /** 创建文件*/
-        fse.mkdirpSync(this.localPath)
     }
 
     checkNodeVersion(){
@@ -101,15 +101,6 @@ class Command{
         }
     }
 
-    /***/
-    createTemplate(project){
-        const storeDir = path.resolve(this.targetPath,'template',project.npmName)
-       if(!pathExists(storeDir)){
-           console.log('存在')
-       }
-       // 获取远端temp
-        console.log(project.versions)
-    }
 
     /**
      * @读取本地配置
@@ -117,7 +108,6 @@ class Command{
      showDefault(){
          const defaultPath = path.resolve(__dirname,'config')
            this.projectSelect =  readFileJson(defaultPath)
-
     }
 }
 

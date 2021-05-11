@@ -26,13 +26,13 @@ class CreatePage{
 
   initArgs(){
     /** 检查有没有带参数，有直接跳过， 没过默认选这*/
-
+    console.log('参数',this.otherArg)
   }
   async init(){
     const projectSelect = [
       {name:'vue2模板',value:'vue2'},
-      {name:'vue3模板',value:'vue3-ts'},
-      {name:'react模板',value:'react'}
+      {name:'vue3模板',value:'vue3-ts'}
+      // {name:'react模板',value:'react'}
     ]
     const {tempName} = await  inqSelect({choices:projectSelect,name:'tempName'})
     this.handleEjsFile(tempName)

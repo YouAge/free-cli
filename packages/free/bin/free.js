@@ -17,7 +17,9 @@ program.version(require('../package.json').version);
 program
     .command('create <app-name>')
     .description('创建一个新的项目')
-    .option('-f, --force','强制创建项目')
+    .option('-f, --force [path]','强制创建项目')
+    .option('-g, --git [path]','git拉取项目模板')
+    .option('-p, --path [path]', '本地获取')
     .action(index)
 
 program
@@ -28,7 +30,7 @@ program
   .command('page <bag-name>')
   .description('创建一个新的vue或者react页面,或者组件')
   .option('-v, --vue','创建vue的页面')
-  .option('-r, --vue','创建react的页面')
+  .option('-r, --react','创建react的页面')
   .action(createPage)
 
 program.parse(process.argv)
