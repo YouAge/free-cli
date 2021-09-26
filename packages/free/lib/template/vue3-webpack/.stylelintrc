@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "rules": {
+    "no-descending-specificity": null,
+    "plugin/declaration-block-no-ignored-properties": true,
+    "at-rule-no-unknown": null
+  }
+}

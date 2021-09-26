@@ -60,21 +60,43 @@ free page appName
 
 ```json
 {
- "description": "默认项目模板",
- "name": "vue默认模板",
- "value": "default",
- "children": [
+  "default_template": true,
+  "classify": [
     {
-     "name": "free-vue2-admin管理项目",
-     "value": "free-vue-admin",
-     "template": {
-      "npmName": "free-vue2-admin-template",
-      "versions": "1.0.0",
-      "ignore": [],
-      "path": "本地地址"
-     }
+      "name": "前端模板",
+      "value": "html"
+    },
+    {
+      "name": "管理模板",
+      "value": "node"
     }
-  ]
+  ],
+  "node": {
+    "option": [
+      {
+        "name": "node-koa接口模板-js版本",
+        "value": "node-koa-temp",
+        "version": "1.0.0",
+        "type": "git",
+        "path": "https://github.com/YouAge/free-vue-admin.git'",
+        "install": {
+          "tool": "yarn",
+          "status": true
+        }
+      }
+    ]
+  },
+  "html": {
+    "option": [
+      {
+        "name":"vue2-admin pc管理项目模板", // 别名
+        "value":"free-vue2-admin-template", // vue
+        "version":"^1.0.0", // 版本
+        "type":"npm", // git,npm file
+        "install": false, // 自动安装环境，
+      }
+    ]
+  }
 }
 ```
 

@@ -1,0 +1,74 @@
+@import "clear.css";
+/**
+ *@ github： https://github.com/YouAge
+ *@ 文件简介：
+ */
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+/* breadcrumb transition */
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all 0.5s;
+}
+.breadcrumb-enter-from,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.breadcrumb-leave-active {
+  position: absolute;
+}
+/** 自转动画*/
+.free-ore-gear {
+  animation: music 6s infinite linear;
+  -webkit-animation: music 6s infinite linear;
+  /* 使用动画 */
+}
+/** 运动轨迹*/
+@keyframes music {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+#app {
+  width: 100%;
+  height: 100%;
+  font-family: "Microsoft YaHei";
+}
+label {
+  font-weight: 700;
+}
+/*# sourceMappingURL=index.css.map */

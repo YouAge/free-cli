@@ -1,0 +1,398 @@
+/**
+ *@ github： https://github.com/YouAge
+ *@ 文件简介：
+ */
+@left : 0.267rem; // 20
+@right: 0.107rem; //8
+
+
+/** 2 个大灯笼*/
+.ort-sum-2,
+.ort-sum-1{
+  height: 2.707rem;
+  width: 2.707rem;
+  background: url("../img/exbg.png");
+  position: absolute;
+  left: 18%;
+  top: -0.933rem;
+  .ort-sum-number1,
+  .ort-sum-number2,
+  .ort-sum-title{
+    position: absolute;
+    transform: translate(-50%, -50%); // 居中
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.4rem;
+  }
+
+  .ort-sum-number1,
+  .ort-sum-number2{
+    color: #00FF6C;
+    left: 50%;
+    height: 0.4rem;
+    width: 100%;
+    line-height: 0.4rem;
+    top: 1.2rem;
+
+  }
+  .ort-sum-number2{
+    top: 1.773rem;
+    color: #02AEFE;
+  }
+
+
+  .ort-sum-title{
+    position: absolute;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    width: 1.867rem;
+    left: 50%;
+    bottom: 0.04rem;
+    border-radius: 0.067rem;
+    background-color: #09144C;
+    //border: 1px  solid #424A78;
+    box-shadow: rgb(0,150,255) 0 0 0.067rem inset;
+    font-size: 0.213rem; // 16px
+
+  }
+
+
+}
+.ort-sum-2{
+  left: 72%
+}
+
+
+
+
+.img1{
+  //margin-top: 0.6rem;
+  min-height: 6rem;
+  box-sizing: border-box;
+}
+
+
+.img1{
+  //display: flex;
+  margin: 0.6rem 0;
+  .box-left{
+    width:100%;
+    position: relative;
+  }
+
+  /** U型实现*/
+  .img1-box {
+    position: absolute;
+    //width: 212px;
+    width:95%;
+    top: 1.15rem;
+    height: 3.733rem;
+    border: 0.267rem solid #424A78;
+    border-radius: 0 120px 120px 0;
+    border-left: none;
+    transform: rotate(0deg);
+    margin-left: 0.133rem;
+    box-sizing: border-box;
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      left: -0.133rem;
+      height: 1.5rem;
+      border: 10px solid #424A78;
+      border-radius: 0.133rem;
+      transform: rotate(-180deg);
+      z-index: 5;
+    }
+    &:after{
+      bottom: -1.5rem;
+      top:auto;
+      left: -0.133rem;
+    }
+  }
+
+  .gear-1,
+  .gear-2,
+  .gear-3,
+  .gear-4,
+  .gear-5 {
+    position: relative;
+    display: flex;
+    margin-left: @left;
+    padding-right: @right;
+    //border: 1px saddlebrown solid;
+  }
+
+  .gear-1,
+  .gear-5{
+    height: 1.15rem;//  cale(1.5rem - 0.267rem);
+  }
+  .gear-2,
+  .gear-3,
+  .gear-4{
+    height: 1.067rem;
+  }
+
+  .gear-1{
+    margin-bottom: 0.267rem;
+  }
+  .gear-3{
+    //display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    //margin: 10px 0 ;
+    .gear-item:nth-child(1){
+      margin-right: 0.30rem;
+    }
+  }
+
+  .gear-5{
+    margin-top: 0.267rem;
+  }
+
+  .gear-1,
+  .gear-5,
+  .gear-2,
+  .gear-4{
+    justify-content: space-between; //2对端对齐
+  }
+
+
+
+  .gear-4,
+  .gear-2{
+    .gear-item:nth-last-child(1){
+      position: absolute;
+      right: 0.133rem;
+      top: 0;
+    }
+    .gear-item:nth-last-child(2){
+      margin-right: 8%;
+    }
+  }
+  .gear-5,
+  .gear-1{
+    .gear-item:nth-last-child(1){
+      position: absolute;
+      right: 0.9rem;
+      top: -0.44rem; // 0.44rem
+    }
+    .gear-item:nth-last-child(2){
+      margin-right: 8%;
+    }
+  }
+  .gear-1{
+    .gear-item:nth-last-child(1){
+      top: unset;
+      right: 1rem;
+      bottom: -0.4rem;
+    }
+  }
+
+}
+
+/** 箭头实现*/
+.img1-box-font0,
+.img1-box-font1,
+.img1-box-font2,
+.img1-box-font3,
+.img1-box-font4{
+  position: absolute;
+  color: #0096FF;
+  font-size: 0.24rem;
+  z-index: 10;
+  animation: music 3s infinite linear;
+}
+.img1-box-font0{
+  top: -1.5rem;  //  //-10px
+  left: -10px;
+  //animation:arrows0 8s infinite linear;
+  .arrows-animation(box-font0,-1.5rem,-0.267rem,-0.133rem,-0.133rem);
+}
+
+.img1-box-font1{
+  left: 0;
+  top: -20px;
+  //animation:arrows 8s infinite linear;
+  .arrows-animation(box-font1,-0.267rem,-0.267rem, 0%, 50%)
+}
+
+.img1-box-font2{
+  left: 50%;
+  top: -0.267rem;
+  //animation:arrows2 8s infinite linear;
+  .arrows-animation(box-font2,-0.267rem,-0.267rem, 50%, 90%);
+}
+.img1-box-font3{
+  top: unset;
+  right: 8%;
+  left: unset;
+  bottom: -20px;
+  .arrows-animation(box-font3,@from-right:8%,@to-right:50%, @from-bottom:-0.267rem,@to-bottom:-0.267rem );
+}
+.img1-box-font4{
+  top: unset;
+  right: 50%;
+  left: unset;
+  bottom: -0.267rem;
+  //.arrows-animation(box-font4,@from-right:50%,@to-right:100%, @from-bottom:-20px,@to-bottom:-20px );
+  animation:arrows2 8s infinite linear;
+}
+
+
+
+.arrows-animation(@name:arows,@from-top:unset,@to-top:unset,@from-left:unset,@to-left:unset,@from-right:unset,@to-right:unset,@from-bottom:unset,@to-bottom:unset,@opacity:1){
+  @keyframes @name{
+    from{
+      opacity: 1;
+      top: @from-top;
+      left: @from-left;
+      right: @from-right;
+      bottom: @from-bottom;
+    }
+    to{
+      top: @to-top;
+      left: @to-left;
+      right: @to-right;
+      bottom: @to-bottom;
+    }
+  }
+  animation:@name 8s infinite linear;
+}
+
+@keyframes arrows2 {
+  0% {
+    opacity: 1;
+    top: unset;
+    right: 50%;
+    left: unset;
+    bottom: -0.267rem;
+    transform:rotate(0deg);
+  }
+  70% {
+    top: unset;
+    right: 99.5%;
+    left: unset;
+    bottom: -0.267rem;
+    transform:rotate(270deg);
+  }
+  100% {
+    top: unset;
+    right: 99.5%;
+    left: unset;
+    bottom: -1.267rem;
+    //transform: rotate(360deg);
+  }
+}
+
+
+
+
+.img3{
+  min-height: calc(100vh - 1.347rem - 0.133rem - 8rem - 0.333rem);
+  height: 4.5rem;
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  .img3-title{
+    width: 50%;
+    height: 0.533rem;
+    background: #09144C;
+    position: absolute;
+    border-radius: 0.133rem;
+    box-shadow: rgb(0,150,255) 0 0 0.067rem inset;
+    text-align: center;
+    line-height: 0.533rem;
+    font-weight: bold;
+  }
+  .img3-content{
+    width: 100%;
+    margin-top: 0.267rem;
+    min-height: 3rem;
+    border-radius: 0.133rem;
+    //border: 0.013rem solid #eff1f4;
+    box-shadow: rgb(0,150,255) 0 0 0.067rem inset;
+  }
+
+   /** 用户 联系方式*/
+  .img3-user{
+     padding:0.4rem;
+    .user-title-card{
+      display: flex;
+      //margin-top: 30px;
+      width: 100%;
+      height: 0.4rem;
+      //cursor: pointer;
+      .user-card{
+        height: 0.507rem;
+        line-height: 0.507rem;
+        width: 1.213rem;
+        background: url("../img/tabbg02.png") no-repeat 100% 100%;
+        text-align: center;
+        //margin-right: 9px;
+      }
+      .ant-space-item{
+        cursor: pointer;
+        .user-card-img{
+          background: url("../img/tabbg01.png") no-repeat 100% 100%;
+        }
+      }
+
+    }
+
+    .wrap,
+    .user-content{
+        margin-top: 17px;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .font-describe{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.7;
+      font-size: 18px;
+      letter-spacing:4px;
+      background-color: #072358;
+      padding: 10px;
+      border-radius: 10px;
+      //box-shadow: rgb(0,150,255) 0 0 0.067rem inset;
+    }
+
+  }
+
+}
+
+
+
+/** 机台 卡片提示样式*/
+.nameTooltipClass{
+  color: #fff;
+  .ant-tooltip-inner{
+    background: #0153Bb;
+  }
+  .ant-popover-arrow-content,
+  .ant-popover-title,
+  .ant-popover-inner-content{
+    background: #0153Bb;
+    color: #fff;
+  }
+
+   >.ant-popover-content > .ant-popover-arrow{
+      border-right-color: #0153Bb;
+      border-bottom-color: #0153Bb;
+      border-top-color: #0153Bb;
+      border-left-color:#0153Bb;
+    }
+  .ant-popover-inner{
+    background: #0153Bb;
+  }
+  .ant-popover-inner-content{
+    border-radius: 8px;
+    box-shadow: rgba(0,0,0,0.3) 0 0 0.267rem;
+  }
+  p{
+    color: #fff;
+  }
+}

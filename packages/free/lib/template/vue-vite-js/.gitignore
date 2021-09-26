@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+
+dist-ssr
+*.local
+
+public.zip
+
+.idea
+.idea/**
+
+**.zip
